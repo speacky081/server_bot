@@ -19,19 +19,22 @@ class Valheim(dc.ext.commands.Cog):
             r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver info | grep Server\ name:",
             shell=True,
             capture_output=True,
-            check=False
+            check=False,
+            text=True
             ).stdout
         password = subprocess.run(
             r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver info | grep Server\ password:",
             shell=True,
             capture_output=True,
-            check=False
+            check=False,
+            text=True
             ).stdout
         status = subprocess.run(
             r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver info | grep Status:",
             shell=True,
             capture_output=True,
-            check=False
+            check=False,
+            text=True
             ).stdout
         await interaction.response.send_message(server_name + "\n" + password + "\n" + status)
 
@@ -42,7 +45,8 @@ class Valheim(dc.ext.commands.Cog):
             "cd /home/vhserver/Servers/valheim_lgsm && ./vhserver start",
             shell=True,
             capture_output=True,
-            check=False
+            check=False,
+            text=True
         )
         await interaction.response.send_message(response.stdout)
 
@@ -55,7 +59,8 @@ class Valheim(dc.ext.commands.Cog):
                 "cd /home/vhserver/Servers/valheim_lgsm && ./vhserver stop",
                 shell=True,
                 capture_output=True,
-                check=False
+                check=False,
+                text=True
             )
             await interaction.response.send_message(response.stdout)
         else:
