@@ -2,7 +2,7 @@ import discord as dc
 from discord.ext import commands
 import valheim_cog
 
-intents = dc.Intents.all()
+intents = dc.Intents.default()
 bot = commands.Bot("*", intents = intents)
 
 with open("TOKEN.txt", "r", encoding="utf-8") as file:
