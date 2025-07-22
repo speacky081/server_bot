@@ -14,7 +14,7 @@ with open("ADMINID.txt", "r", encoding="utf-8") as file:
 @bot.event
 async def setup_hook():
     '''setup'''
-    await bot.load_extension("cogs.util")
+    await bot.load_extension("cogs.valheim")
     await bot.tree.sync()
 
 bot.run(TOKEN)
