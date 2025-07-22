@@ -1,3 +1,4 @@
+import asyncio
 import subprocess
 import discord as dc
 from discord import app_commands
@@ -17,21 +18,21 @@ class Valheim(dc.ext.commands.Cog):
         '''runs lsgm info command and returns basic info'''
         await interaction.response.defer(thinking=True)
         server_name = subprocess.run(
-            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver info | grep Server\ name:",
+            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver details | grep Server\ name:",
             shell=True,
             capture_output=True,
             check=False,
             text=True
             ).stdout
         password = subprocess.run(
-            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver info | grep Server\ password:",
+            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver details | grep Server\ password:",
             shell=True,
             capture_output=True,
             check=False,
             text=True
             ).stdout
         status = subprocess.run(
-            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver info | grep Status:",
+            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver details | grep Status:",
             shell=True,
             capture_output=True,
             check=False,
