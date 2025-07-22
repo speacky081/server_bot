@@ -35,7 +35,7 @@ class Valheim(dc.ext.commands.Cog):
             text=True
             ).stdout
         status = subprocess.run(
-            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver details | grep Status:",
+            r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver details | grep -m1 Status:",
             shell=True,
             capture_output=True,
             check=False,
