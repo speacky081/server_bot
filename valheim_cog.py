@@ -60,10 +60,3 @@ class Valheim(dc.ext.commands.Cog):
             await interaction.response.send_message(response.stdout)
         else:
             await interaction.response.send_message("Du bist kein Spieler also darfst du das nicht")
-
-
-async def setup(bot):
-    '''setup'''
-    #cog = Valheim(bot)
-    #await bot.add_cog(cog)
-    #bot.tree.add_command(cog.valheim)
