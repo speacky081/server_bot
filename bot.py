@@ -17,3 +17,4 @@ async def on_ready():
     await bot.add_cog(valheim_cog.Valheim(bot))
 
 bot.run(TOKEN)
+#test
