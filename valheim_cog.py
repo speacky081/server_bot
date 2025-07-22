@@ -15,6 +15,7 @@ class Valheim(dc.ext.commands.Cog):
     @valheim.command(name="info", description="Gibt grundlegende Informationen über den Server")
     async def info(self, interaction: dc.Interaction):
         '''runs lsgm info command and returns basic info'''
+        await interaction.response.defer(thinking=True)
         server_name = subprocess.run(
             r"cd /home/vhserver/Servers/valheim_lgsm && ./vhserver info | grep Server\ name:",
             shell=True,
@@ -36,11 +37,12 @@ class Valheim(dc.ext.commands.Cog):
             check=False,
             text=True
             ).stdout
-        await interaction.response.send_message(server_name + "\n" + password + "\n" + status)
+        await interaction.followup.send(server_name + "\n" + password + "\n" + status)
 
     @valheim.command(name="start", description="Startet den Server falls er noch nicht läuft")
     async def start(self, interaction: dc.Interaction):
         '''starts the server if not already up'''
+        await interaction.response.defer(thinking=True)
         response = subprocess.run(
             "cd /home/vhserver/Servers/valheim_lgsm && ./vhserver start",
             shell=True,
@@ -48,11 +50,12 @@ class Valheim(dc.ext.commands.Cog):
             check=False,
             text=True
         )
-        await interaction.response.send_message(response.stdout)
+        await interaction.followup.send(response.stdout)
 
     @valheim.command(name="stop", description="Stoppt den Server")
     async def stop(self, interaction: dc.Interaction):
         '''stops the server if the user is a player'''
+        await interaction.response.defer(thinking=True)
         players = [468142012466593792, 480411398703284266, 690908179407831070]
         if interaction.user.id in players:
             response = subprocess.run(
@@ -62,6 +65,6 @@ class Valheim(dc.ext.commands.Cog):
                 check=False,
                 text=True
             )
-            await interaction.response.send_message(response.stdout)
+            await interaction.followup.send(response.stdout)
         else:
-            await interaction.response.send_message("Du bist kein Spieler also darfst du das nicht")
+            await interaction.followup.send("Du bist kein Spieler also darfst du das nicht")
