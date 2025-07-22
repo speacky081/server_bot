@@ -65,4 +65,4 @@ class Valheim(dc.ext.commands.Cog):
 async def setup(bot):
     cog = Valheim(bot)
     await bot.add_cog(cog)
-    bot.tree.add_command(cog.util)
+    bot.tree.add_command(cog.valheim)
