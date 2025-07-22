@@ -12,9 +12,9 @@ with open("ADMINID.txt", "r", encoding="utf-8") as file:
     ADMIN_ID = file.readlines()[0]
 
 @bot.event
-async def on_ready():
-    '''load cog on ready'''
-    await bot.add_cog(valheim_cog.Valheim(bot))
+async def setup_hook():
+    await bot.load_extension("cogs.util")
+    await bot.tree.sync()
 
 bot.run(TOKEN)
 #test
