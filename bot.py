@@ -1,6 +1,5 @@
 import discord as dc
 from discord.ext import commands
-import valheim_cog
 
 intents = dc.Intents.default()
 bot = commands.Bot("#", intents = intents)
@@ -14,8 +13,7 @@ with open("ADMINID.txt", "r", encoding="utf-8") as file:
 @bot.event
 async def setup_hook():
     '''setup'''
-    await bot.load_extension("cogs.valheim")
+    await bot.load_extension("valheim_cog")
     await bot.tree.sync()
 
 bot.run(TOKEN)
-#test
