@@ -3,7 +3,6 @@ from discord.ext import commands
 import valheim_cog
 
 intents = dc.Intents.default()
-intents.message_content = True
 bot = commands.Bot("§", intents = intents)
 
 with open("TOKEN.txt", "r", encoding="utf-8") as file:
