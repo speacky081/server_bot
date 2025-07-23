@@ -5,10 +5,10 @@ import valheim_cog
 intents = dc.Intents.default()
 bot = commands.Bot("§", intents = intents)
 
-with open("/home/vhserver/server_bot.py/TOKEN.txt", "r", encoding="utf-8") as file:
+with open("/home/vhserver/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
     TOKEN = file.readlines()[0]
 
-with open("/home/vhserver/server_bot.py/ADMINID.txt", "r", encoding="utf-8") as file:
+with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
     ADMIN_ID = file.readlines()[0]
 
 @bot.event
