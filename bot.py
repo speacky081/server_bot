@@ -14,7 +14,9 @@ with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as fil
 
 async def on_ready():
     '''setup'''
-    await bot.add_cog(valheim_cog.Valheim(bot))
+    cogv = valheim_cog.Valheim(bot)
+    await bot.add_cog(cogv)
+    bot.tree.add_command(cogv.valheim)
     bot.tree.add_command(cmd_sync.app_command, override=True)
     # await bot.tree.sync()
 
