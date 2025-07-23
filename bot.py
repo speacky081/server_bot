@@ -12,6 +12,7 @@ with open("/home/vhserver/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
 with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
     ADMIN_ID = int(file.readlines()[0])
 
+@bot.event
 async def on_ready():
     '''setup'''
     cogv = valheim_cog.Valheim(bot)
