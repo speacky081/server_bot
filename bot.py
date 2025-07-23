@@ -6,11 +6,18 @@ intents = dc.Intents.default()
 intents.message_content = True
 bot = commands.Bot("§", intents = intents)
 
-with open("/home/vhserver/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
-    TOKEN = file.readlines()[0]
+#with open("/home/vhserver/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
+#    TOKEN = file.readlines()[0]
+#
+#with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
+#    ADMIN_ID = file.readlines()[0]
 
-with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
-    ADMIN_ID = file.readlines()[0]
+with open("/home/alina/Programmieren/Python/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
+    TOKEN = file.readlines()[0].strip()
+
+with open("/home/alina/Programmieren/Python/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
+    ADMIN_ID = int(file.readlines()[0].strip())
+    print(ADMIN_ID)
 
 @bot.event
 async def on_ready():
@@ -20,9 +27,9 @@ async def on_ready():
     # await bot.tree.sync()
 
 @bot.hybrid_command(name='sync', description='Sync all commands.')
-async def cmd_sync(ctx):
+async def cmd_sync(ctx: commands.Context):
     '''syncs slash commands'''
-    if ctx.user.id == ADMIN_ID:
+    if ctx.author.id == ADMIN_ID:
         bot.tree.add_command(cmd_sync.app_command, override=True)
         await bot.tree.sync()
         await ctx.send('Synced successfully.', ephemeral=True)
