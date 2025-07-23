@@ -13,13 +13,12 @@ with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as fil
     ADMIN_ID = int(file.readlines()[0])
 
 @bot.event
-async def on_ready():
-    '''setup'''
+async def setup_hook():
+    '''Set up slash commands here. In on_ready the calls might be fired multiple times which can cause trouble'''
     cogv = valheim_cog.Valheim(bot)
     await bot.add_cog(cogv)
-    bot.tree.add_command(cogv.valheim)
-    bot.tree.add_command(cmd_sync.app_command, override=True)
-    # await bot.tree.sync()
+    if not bot.tree.get_command("valheim"):
+        bot.tree.add_command(cogv.valheim)
 
 @bot.hybrid_command(name='sync', description='Sync all commands.')
 async def cmd_sync(ctx: commands.Context):
