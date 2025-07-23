@@ -16,7 +16,7 @@ async def on_ready():
     '''setup'''
     await bot.add_cog(valheim_cog.Valheim(bot))
     bot.tree.add_command(cmd_sync.app_command, override=True)
-    await bot.tree.sync()
+    # await bot.tree.sync()
 
 @bot.hybrid_command(name='sync', description='Sync all commands.')
 async def cmd_sync(ctx):
