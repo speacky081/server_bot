@@ -96,5 +96,8 @@ class Valheim(dc.ext.commands.Cog):
                 text=True
             )
             await interaction.followup.send(ANSI.sub('', response.stdout).strip())
+            # set activity to show that the server is online
+            game = dc.Game("Valheim")
+            await self.bot.change_presence(activity=game)
         else:
             await interaction.followup.send("Du bist kein Spieler also darfst du das nicht")
