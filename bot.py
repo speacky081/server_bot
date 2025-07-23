@@ -6,20 +6,12 @@ intents = dc.Intents.default()
 intents.message_content = True
 bot = commands.Bot("§", intents = intents)
 
-#with open("/home/vhserver/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
-#    TOKEN = file.readlines()[0]
-#
-#with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
-#    ADMIN_ID = file.readlines()[0]
+with open("/home/vhserver/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
+    TOKEN = file.readlines()[0]
 
-with open("/home/alina/Programmieren/Python/server_bot/TOKEN.txt", "r", encoding="utf-8") as file:
-    TOKEN = file.readlines()[0].strip()
+with open("/home/vhserver/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
+    ADMIN_ID = int(file.readlines()[0])
 
-with open("/home/alina/Programmieren/Python/server_bot/ADMINID.txt", "r", encoding="utf-8") as file:
-    ADMIN_ID = int(file.readlines()[0].strip())
-    print(ADMIN_ID)
-
-@bot.event
 async def on_ready():
     '''setup'''
     await bot.add_cog(valheim_cog.Valheim(bot))
